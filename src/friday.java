@@ -66,7 +66,7 @@ class Stuff<T> {
         }
     }
 }
-
+//
 public class friday {
     public static void main(String[] args) {
         Stuff<test> s = new Stuff<test>();
