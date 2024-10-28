@@ -1,10 +1,13 @@
+import java.util.*;
+
 class test {
     private int _x;
 
     public test() {
 
     }
-// adding a comment to test
+
+    // adding a comment to test
     public test(int a) {
         _x = a;
     }
@@ -40,39 +43,68 @@ class test2 {
 }
 
 class Stuff<T> {
-    private T _thing;
-
+    private ArrayList<T> _thing;
     public Stuff() {
-        _thing = null;
+        _thing = new ArrayList<T>();
     }
 
-    public Stuff(T t) {
-        _thing = null;
+    public Stuff(int size) {
+        _thing = new ArrayList<T>(size);
     }
 
-    public T getThing() {
-        return _thing;
+    public void addItem(T t) {
+        _thing.add(t);
     }
 
-    public void setThing(T t) {
-        _thing = t;
+    public T removeItem(int idx) {
+        if (idx < _thing.size() && idx >= 0){
+            T item = _thing.remove(idx);
+            return item;
+        }
+        return null;
     }
+
+    public boolean findItem(T item) {
+        boolean found = false;
+        int i = 0;
+        while (i < _thing.size() && !found){
+            if(_thing.get(i).equals(item)){
+                found = true;
+            } else {
+                i++;
+            }
+        }
+        return found;
+    }
+
+    public void printItems() {
+
+    }
+//    public T getThing() {
+//        return _thing;
+//    }
+//
+//    public void setThing(T t) {
+//        _thing = t;
+//    }
 
     public void print() {
-        if(_thing != null){
+        if (_thing != null) {
             System.out.println("Type: " + _thing.getClass().getName() + ", value: " + _thing);
         } else {
             System.out.println("null member variable");
         }
     }
 }
+
 //
 public class friday {
     public static void main(String[] args) {
         Stuff<test> s = new Stuff<test>();
-        s.print();
-        s.setThing(new test(5));
-        System.out.println(s.getThing().getX());
+        Stuff<test> s2 = new Stuff<test>(5);
+        s.addItem(new test(3));
+        test t = new test(3);
+        System.out.println(s.findItem(t));
     }
 }
 //b
