@@ -20,6 +20,20 @@ class test {
         _x = a;
     }
 
+    public boolean equals(Object t){
+        System.out.println("Called equals");
+        if (this == t){
+            return true;
+        }
+        if (t == null){
+            return false;
+        }
+        if (t instanceof test){
+            return _x == ((test)t)._x;
+        } else {
+            return false;
+        }
+    }
 
 }
 
